@@ -1,9 +1,31 @@
 class Checkout
 
-  def initialize(attrs = {})
+  attr_accessor :products, :basket, :total_price
+
+  def initialize()
+    @total_price = 0
     @basket = []
-    @products = add_products()
+    @products = { heart: { nr001: 9.25 },
+                  cufflinks: { nr002: 45.0 },
+                  tshirt: { nr003: 19.95 } }
   end
+
+def scan(name)
+  item = name.to_sym
+  item_number = @products[item].keys
+  add_to_basket(item_number[0].to_s)
+  item_price = @products[item].values
+  @total_price += item_price[0]
+  return [item_number[0].to_s, item_price[0]]
+end
+
+def add_to_basket(item)
+  @basket << item
+end
+
+def
+
+#my_hash[:nested_hash][:first_key]
 
 #As a market
 #In order to display our goods
