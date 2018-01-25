@@ -21,4 +21,8 @@ describe Checkout do
     expect(subject.scan('heart')).to eq ['nr001', 9.25]
   end
 
+  it 'prints out what is in the basket' do
+    subject.scan('heart')
+    expect(subject.total).to eq ['Basket: nr001 ', "Total price expected: 9.25"]
+  end
 end

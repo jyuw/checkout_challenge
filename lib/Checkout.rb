@@ -10,22 +10,25 @@ class Checkout
                   tshirt: { nr003: 19.95 } }
   end
 
-def scan(name)
-  item = name.to_sym
-  item_number = @products[item].keys
-  add_to_basket(item_number[0].to_s)
-  item_price = @products[item].values
-  @total_price += item_price[0]
-  return [item_number[0].to_s, item_price[0]]
-end
+  def scan(name)
+    item = name.to_sym
+    item_number = @products[item].keys
+    add_to_basket(item_number[0].to_s)
+    item_price = @products[item].values
+    @total_price += item_price[0]
+    return [item_number[0].to_s, item_price[0]]
+  end
 
-def add_to_basket(item)
-  @basket << item
-end
+  def add_to_basket(item)
+    @basket << item
+  end
 
-def
-
-#my_hash[:nested_hash][:first_key]
+  def total
+    basket = 'Basket: '
+    @basket.each {|item| basket << item + " "}
+    price = 'Total price expected: ' + @total_price.to_s
+    return [basket, price]
+  end
 
 #As a market
 #In order to display our goods
@@ -46,10 +49,4 @@ def
 #As a user
 #In order to check out
 #We need to display the correct final price with discount
-
-
-
-  def add_products
-
-  end
 end
