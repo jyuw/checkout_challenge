@@ -39,6 +39,7 @@ class Checkout
   percentage = (1 - (@discount / 100))
   @total_price *= percentage
   end
+end
 
 #As a market
 #In order to display our goods
@@ -59,4 +60,3 @@ class Checkout
 #As a user
 #In order to check out
 #We need to display the correct final price with discount
-end
