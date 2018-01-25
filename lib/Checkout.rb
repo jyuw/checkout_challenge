@@ -1,5 +1,10 @@
 class Checkout
 
+  def initialize(attrs = {})
+    @basket = []
+    @products = add_products()
+  end
+
 #As a market
 #In order to display our goods
 #We need to make a database
@@ -20,10 +25,7 @@ class Checkout
 #In order to check out
 #We need to display the correct final price with discount
 
-  def initialize(attrs = {})
-    @basket = []
-    @products = add_products()
-  end
+
 
   def add_products
 
