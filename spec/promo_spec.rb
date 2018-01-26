@@ -15,4 +15,7 @@ describe PromoRules do
     expect(subject.product_counter(basket)).to eq ['nr001', 'nr001']
   end
 
+  it 'gives full discount' do
+    expect(subject.discount_test(100, ['nr001', 'nr001', 'nr003'])).to eq 88.65
+  end
 end
