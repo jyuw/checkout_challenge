@@ -1,12 +1,11 @@
+require './lib/promo_rules.rb'
+include PromoRules
+
 class Checkout
 
   attr_accessor :products, :basket, :total_price
 
-  def initialize(minimum, discount, product_code, price_drop)
-    @minimum = minimum
-    @discount = discount
-    @product_code = product_code
-    @price_drop = price_drop
+  def initialize()
     @total_price = 0
     @basket = []
     @products = { heart: { nr001: 9.25 },
@@ -28,17 +27,13 @@ class Checkout
   end
 
   def total
-    minimum_spent if @total_price >= @minimum
+    @total_price = PromoRules.minimum_spent(@total_price) if @total_price >= PromoRules::MINIMUM
     basket = 'Basket: '
     @basket.each {|item| basket << item + " "}
     price = 'Total price expected: ' + @total_price.to_s
     return [basket, price]
   end
 
-  def minimum_spent
-  percentage = (1 - (@discount / 100))
-  @total_price *= percentage
-  end
 end
 
 #As a market

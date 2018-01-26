@@ -1,16 +1,18 @@
 require 'Checkout.rb'
 
-class Promo_rules
-  attr_accessor :minimum, :discount, :product_code, :price_drop
+module PromoRules
 
-  def initialize(minimum, discount, product_code, price_drop)
-    @minimum = minimum
-    @discount = discount
-    @product_code = product_code
-    @price_drop = price_drop
+DISCOUNT = 10
+MINIMUM = 60.0
+PRODUCT_CODE = :nr001
+PRICE_DROP = 8.50
+
+
+  def minimum_spent(total_price)
+    percentage = (1 - (DISCOUNT / 100))
+    total_price *= percentage
   end
 
-  def minimum_spent(discount)
-    @total_price * (discount/10)
-  end
+
+
 end

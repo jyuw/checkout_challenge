@@ -1,8 +1,9 @@
 require './lib/Checkout.rb'
-
+require './lib/promo_rules.rb'
+include PromoRules
 describe Checkout do
 
-subject {Checkout.new(60.0, 10.0, 'nr001', 8.5)}
+subject {Checkout.new()}
 
   it 'returns a list of products' do
     list = { heart: { nr001: 9.25 },
@@ -26,7 +27,7 @@ subject {Checkout.new(60.0, 10.0, 'nr001', 8.5)}
 
   it 'tests minimum_spent method' do
     subject.total_price = 70
-    expect(subject.minimum_spent).to eq 63
+    expect(PromoRules.minimum_spent(subject.total_price)).to eq 63
   end
 
   it 'gives discount if minimum_spent is reached' do
