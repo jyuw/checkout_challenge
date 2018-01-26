@@ -10,4 +10,9 @@ describe PromoRules do
     expect(subject.discount_test(18.50, ['nr001', 'nr001'])).to eq 17
   end
 
+  it 'count the number of discounted produnts' do
+    basket = ['nr001', 'nr001', 'nr003']
+    expect(subject.product_counter(basket)).to eq ['nr001', 'nr001']
+  end
+
 end
