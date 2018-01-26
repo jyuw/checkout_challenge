@@ -1,7 +1,8 @@
 require './lib/promo_rules.rb'
-include PromoRules
+
 
 class Checkout
+  #include PromoRules
 
   attr_accessor :products, :basket, :total_price
 
@@ -30,6 +31,7 @@ class Checkout
     if @total_price >= PromoRules::MINIMUM
       @total_price = PromoRules.minimum_spent(@total_price)
     end
+
     basket = 'Basket: '
     @basket.each {|item| basket << item + ' '}
     price = 'Total price expected: ' + @total_price.to_s

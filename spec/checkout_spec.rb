@@ -1,10 +1,10 @@
-require './lib/Checkout.rb'
+require './lib/checkout.rb'
 require './lib/promo_rules.rb'
-include PromoRules
+
 
 describe Checkout do
 
-subject {Checkout.new()}
+  subject {Checkout.new}
 
   it 'returns a list of products' do
     list = { heart: { nr001: 9.25 },
