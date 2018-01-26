@@ -28,7 +28,7 @@ describe Checkout do
 
   it 'tests minimum_spent method' do
     subject.total_price = 70
-    expect(PromoRules.minimum_spent(subject.total_price)).to eq 63
+    expect(PromoRules.discount_test(subject.total_price, [])).to eq 63
   end
 
   it 'gives discount if minimum_spent is reached' do

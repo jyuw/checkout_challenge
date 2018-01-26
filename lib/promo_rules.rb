@@ -8,8 +8,8 @@ module PromoRules
   PRODUCT_CODE = :nr001
   PRICE_DROP = 8.50
 
-  def self.minimum_spent(total_price)
+  def self.discount_test(total_price, basket)
     percentage = (1 - (DISCOUNT / 100))
-    total_price * percentage
+    final_price = total_price * percentage
   end
 end

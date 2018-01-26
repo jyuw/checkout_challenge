@@ -29,7 +29,7 @@ class Checkout
 
   def total
     if @total_price >= PromoRules::MINIMUM
-      @total_price = PromoRules.minimum_spent(@total_price)
+      @total_price = PromoRules.discount_test(@total_price, @basket)
     end
 
     basket = 'Basket: '

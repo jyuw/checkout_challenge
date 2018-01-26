@@ -1,11 +1,13 @@
 require './lib/promo_rules.rb'
 
-describe Promo_rules do #product_code, price_drop
+describe PromoRules do
 
-subject { Promo_rules.new }
+  it 'delivers the correct discount' do
+    expect(subject.discount_test(90, [])).to eq 81
+  end
 
-  it 'deliver the correct discount' do
-    expect(subject.minimum_spent(60, 10)).to eq 54
+  it 'checks if more than two of one product is in the basket' do
+    expect(subject.discount_test(18.50, ['nr001', 'nr001'])).to eq 17
   end
 
 end
