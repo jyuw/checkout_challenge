@@ -27,13 +27,14 @@ class Checkout
   end
 
   def total
-    @total_price = PromoRules.minimum_spent(@total_price) if @total_price >= PromoRules::MINIMUM
+    if @total_price >= PromoRules::MINIMUM
+      @total_price = PromoRules.minimum_spent(@total_price)
+    end
     basket = 'Basket: '
-    @basket.each {|item| basket << item + " "}
+    @basket.each {|item| basket << item + ' '}
     price = 'Total price expected: ' + @total_price.to_s
     return [basket, price]
   end
-
 end
 
 #As a market

@@ -1,6 +1,7 @@
 require './lib/Checkout.rb'
 require './lib/promo_rules.rb'
 include PromoRules
+
 describe Checkout do
 
 subject {Checkout.new()}
@@ -22,7 +23,7 @@ subject {Checkout.new()}
 
   it 'prints out what is in the basket' do
     subject.scan('heart')
-    expect(subject.total).to eq ['Basket: nr001 ', "Total price expected: 9.25"]
+    expect(subject.total).to eq ['Basket: nr001 ', 'Total price expected: 9.25']
   end
 
   it 'tests minimum_spent method' do
@@ -32,6 +33,6 @@ subject {Checkout.new()}
 
   it 'gives discount if minimum_spent is reached' do
     subject.total_price = 70
-    expect(subject.total).to eq ['Basket: ', "Total price expected: 63.0"]
+    expect(subject.total).to eq ['Basket: ', 'Total price expected: 63.0']
   end
 end
